@@ -9,6 +9,46 @@ public class Partie {
         this.motADeviner = motADeviner;
     }
     
+    
+    public StatutLettre[] jouer(char[] proposition){
+        
+        char[] cloneMotADeviner = new char[motADeviner.length];
+        for(int i = 0; i< motADeviner.length; i++){
+            cloneMotADeviner[i] = motADeviner[i];
+        }
+        
+         
+        // initilisation tableau qui affiche resultat d'une proposition
+        StatutLettre[] resultat = new StatutLettre[proposition.length];
+        for(int i = 0; i<resultat.length ; i++){
+            resultat[i] = StatutLettre.ABSENT;
+        }
+        
+        // on parcoure les lettres de la proposition du joueur
+        for(int i=0; i<proposition.length; i++){
+           
+            // on a déviné !
+            if(proposition[i]==motADeviner[i]){
+                resultat[i] = StatutLettre.BIEN_PLACE;
+                cloneMotADeviner[i] = '?';
+            } 
+        }
+       
+        for(int i=0; i<proposition.length; i++){
+            for(int j=0; j<motADeviner.length ; j++){
+                if(cloneMotADeviner[j]==proposition[i]){
+                    resultat[i] = StatutLettre.MAL_PLACE;
+                    cloneMotADeviner[j] = '?';
+                    break;
+                }
+            }
+        }
+            
+        
+        return resultat;
+    }
+    
+    /*
     public StatutLettre[] jouer(char[] proposition){
         
         // que faire si taille proposition est différente de taille motADeviner
@@ -37,5 +77,5 @@ public class Partie {
         
         return resultat;
     }
-
+*/
 }
