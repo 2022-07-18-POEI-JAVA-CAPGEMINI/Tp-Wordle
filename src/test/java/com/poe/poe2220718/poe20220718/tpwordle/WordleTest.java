@@ -54,4 +54,24 @@ public class WordleTest {
         assertEquals(StatutLettre.BIEN_PLACE, resultat[3]);
         assertEquals(StatutLettre.ABSENT, resultat[4]);
     }
+    
+    @Test
+    public void testPasSlaut() {
+
+        Partie partie = new Partie("hello".toCharArray());
+        StatutLettre[] resultat = partie.jouer("slaut".toCharArray());
+        assertEquals(StatutLettre.ABSENT, resultat[0]);
+        assertEquals(StatutLettre.MAL_PLACE, resultat[1]);
+        assertEquals(StatutLettre.ABSENT, resultat[2]);
+    }
+    
+    @Test
+    public void testPasLlaut() {
+
+        Partie partie = new Partie("hello".toCharArray());
+        StatutLettre[] resultat = partie.jouer("llaut".toCharArray());
+        assertEquals(StatutLettre.MAL_PLACE, resultat[0]);
+        assertEquals(StatutLettre.MAL_PLACE, resultat[1]);
+        assertEquals(StatutLettre.ABSENT, resultat[2]);
+    }
 }
