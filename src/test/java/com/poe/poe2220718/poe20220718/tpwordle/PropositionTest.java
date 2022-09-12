@@ -74,4 +74,23 @@ public class PropositionTest {
         assertEquals(StatutLettre.MAL_PLACE, resultat[1]);
         assertEquals(StatutLettre.ABSENT, resultat[2]);
     }
+    
+    @Test
+    public void testTroisLettresIdentiques() {
+
+        Partie partie = new Partie("lello".toCharArray());
+        StatutLettre[] resultat = partie.jouer("laaut".toCharArray());
+        assertEquals(StatutLettre.BIEN_PLACE, resultat[0]);
+        assertEquals(StatutLettre.ABSENT, resultat[1]);
+        assertEquals(StatutLettre.ABSENT, resultat[2]);
+    }
+    @Test
+    public void testTroisLettresIdentiquesBis() {
+
+        Partie partie = new Partie("helol".toCharArray());
+        StatutLettre[] resultat = partie.jouer("alaut".toCharArray());
+        assertEquals(StatutLettre.ABSENT, resultat[0]);
+        assertEquals(StatutLettre.MAL_PLACE, resultat[1]);
+        assertEquals(StatutLettre.ABSENT, resultat[2]);
+    }
 }

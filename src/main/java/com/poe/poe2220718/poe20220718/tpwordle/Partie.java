@@ -14,7 +14,10 @@ public class Partie {
     
     // On oblige à fournir le Mot à deviner lors de la création de la Partie
     public Partie(char[] motADeviner) {
-        this.motADeviner = motADeviner;
+        
+        // conversion en minuscule pour sécuriser
+        this.motADeviner = String.valueOf(motADeviner).toLowerCase().toCharArray();
+        
         nombreTentativesRestantes = nombreTentativesMax;
         historique = new ArrayList<HistoriqueItem>();
     }
@@ -60,6 +63,9 @@ public class Partie {
    */
     
     public StatutLettre[] jouer(char[] proposition){
+          // conversion en minuscule pour sécuriser
+        proposition = String.valueOf(proposition).toLowerCase().toCharArray();
+        
         // initilisation tableau qui affiche resultat d'une proposition
         StatutLettre[] resultat = new StatutLettre[proposition.length];
         for(int i = 0; i<resultat.length ; i++){
@@ -131,4 +137,18 @@ public class Partie {
     public boolean nombreTentativesMaxAtteint() {
         return nombreTentativesRestantes == 0;
     }
+
+    public char[] getMotADeviner() {
+        return motADeviner;
+    }
+
+    public ArrayList<HistoriqueItem> getHistorique() {
+        return historique;
+    }
+
+    public int getNombreTentativesRestantes() {
+        return nombreTentativesRestantes;
+    }
+    
+    
 }
