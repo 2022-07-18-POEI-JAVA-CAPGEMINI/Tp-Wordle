@@ -1,15 +1,22 @@
 package com.poe.poe2220718.poe20220718.tpwordle;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Partie {
     
+    public static int nombreTentativesMax = 5;
+    
     private char[] motADeviner;
+    private int nombreTentativesRestantes;
+    private ArrayList<HistoriqueItem> historique;
     
     // On oblige à fournir le Mot à deviner lors de la création de la Partie
     public Partie(char[] motADeviner) {
         this.motADeviner = motADeviner;
+        nombreTentativesRestantes = nombreTentativesMax;
+        historique = new ArrayList<HistoriqueItem>();
     }
     
     /*  
@@ -100,7 +107,28 @@ public class Partie {
                 }
            }
         }
-            
-         return resultat;
+        
+        nombreTentativesRestantes--;
+        historique.add(new HistoriqueItem(proposition, resultat));
+        return resultat;
+    }
+    
+    public StatutLettre[] getDernierStatut() {
+        return historique.get(historique.size()-1).getResultatProposition();
+    }
+    
+    public boolean motDevine(){
+        
+        StatutLettre[] statut = getDernierStatut();
+        for(int i=0; i<statut.length; i++){
+            if(statut[i] != StatutLettre.BIEN_PLACE){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean nombreTentativesMaxAtteint() {
+        return nombreTentativesRestantes == 0;
     }
 }

@@ -1,12 +1,12 @@
 package com.poe.poe2220718.poe20220718.tpwordle;
 
-public class Wordle {
+public class WordleVersionConsole {
+
     
-    DictionaireDeMots dictionnaire = new DictionaireDeMotsSansBaseDeDonnees();
-    
-    
-    public void jouerPartie() {
+    public static void main(String[] args) {
         
+        DictionaireDeMots dictionnaire = new DictionaireDeMotsSansBaseDeDonnees();
+         
         char[] motADeviner = dictionnaire.obtenirUnMotAleatoirement();
         Partie partie = new Partie(motADeviner);
         

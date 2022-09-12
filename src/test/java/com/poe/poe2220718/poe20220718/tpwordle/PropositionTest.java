@@ -3,7 +3,7 @@ package com.poe.poe2220718.poe20220718.tpwordle;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class WordleTest {
+public class PropositionTest {
 
     @Test
     public void testPasEncoreGagne() {
